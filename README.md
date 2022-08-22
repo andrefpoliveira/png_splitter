@@ -24,6 +24,11 @@ Creates 10 smaller images:
   <img src="https://github.com/andrefpoliveira/png_splitter/blob/master/splitted/9.png" width="80" />
 </p>
 
+### How to Install
+```
+pip install png_splitter
+```
+
 All you have to do is:
 ```py
 png_splitter.split_image("image.png", "images_folder")
