@@ -46,8 +46,6 @@ def split_image(img_path, folder_path):
         x_values = [x[0] for x in set]
         y_values = [x[1] for x in set]
 
-        box = (min(x_values), min(y_values), max(x_values), max(y_values))
+        box = (min(x_values), min(y_values), max(x_values) + 1, max(y_values) + 1)
         outp = im.crop(box)
         outp.save(f"{folder_path}/{id}.png")
-
-split_image("image.png", "splitted")
