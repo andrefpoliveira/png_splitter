@@ -49,5 +49,3 @@ def split_image(img_path, folder_path):
         box = (min(x_values), min(y_values), max(x_values) + 1, max(y_values) + 1)
         outp = im.crop(box)
         outp.save(f"{folder_path}/{id}.png")
-
-split_image("special.png", "output")
