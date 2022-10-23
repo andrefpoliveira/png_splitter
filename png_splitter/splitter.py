@@ -23,7 +23,7 @@ def split_image(img_path, folder_path):
 
     for row in range(height):
         for col in range(width):
-            if not visited[col][row] and pix[col, row] != (0, 0, 0, 0):
+            if not visited[col][row] and pix[col, row][3] != 0:
                 visited[col][row] = True
 
                 set = {(col, row)}
@@ -32,7 +32,7 @@ def split_image(img_path, folder_path):
                 while queue:
                     col, row = queue.pop(0)
                     for nrow, ncol in [(row + 1, col), (row - 1, col), (row, col + 1), (row, col - 1)]:
-                        if 0 <= nrow < im.size[1] and 0 <= ncol < im.size[0] and not visited[ncol][nrow] and pix[ncol, nrow] != (0, 0, 0, 0):
+                        if 0 <= nrow < im.size[1] and 0 <= ncol < im.size[0] and not visited[ncol][nrow] and pix[ncol, nrow][3] != 0:
                             visited[ncol][nrow] = True
                             set.add((ncol, nrow))
                             queue.append((ncol, nrow))
@@ -49,3 +49,5 @@ def split_image(img_path, folder_path):
         box = (min(x_values), min(y_values), max(x_values) + 1, max(y_values) + 1)
         outp = im.crop(box)
         outp.save(f"{folder_path}/{id}.png")
+
+split_image("special.png", "output")
